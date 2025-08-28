@@ -11,5 +11,11 @@ gameRoutes.get("/games", gameController.getAllgames);
 // ENDPOINT para CADASTRAR
 gameRoutes.post("/games", gameController.createGame);
 
+// ENDPOINT para DELETAR
+gameRoutes.delete("/games/:id", gameController.deleteGame);
+
+// ENDPOINT para ALTERAR
+gameRoutes.put("/games/:id", gameController.UpdateGame);
+
 export default gameRoutes;
 

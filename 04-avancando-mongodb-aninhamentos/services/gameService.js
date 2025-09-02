@@ -17,14 +17,13 @@ class gameService {
 
 
     // Cadastrando registros no banco
-    async create(title, year, genre, platform, price) {
+    async create(title, year, price, descriptions) {
         try {
             const newGame = new Game({
-                title: title,
-                year: year,
-                genre: genre,
-                platform: platform,
-                price: price
+                title,
+                year,
+                price,
+                descriptions
             });
             await newGame.save()
 
@@ -47,14 +46,13 @@ class gameService {
 
 
     // Alterando registros no banco
-    async Update(id, title, year, genre, platform, price) {
+    async Update(title, year, price, descriptions) {
         try {
             const game = await Game.findByIdAndUpdate(id, {
                 title,
                 year,
-                genre,
-                platform,
-                price
+                price,
+                descriptions
             },
             { new : true}
         );

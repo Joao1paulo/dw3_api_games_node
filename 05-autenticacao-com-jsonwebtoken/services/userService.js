@@ -1,31 +1,30 @@
-//Importando o model
 import User from "../models/Users.js";
 
-class userServices {
 
+class userService{
     // Método para CADASTRAR usuário
     async Create(name, email, password){
         try{
             const newUser = new User({
-                name, 
+                name,
                 email,
-                password
+                password,
             });
             await newUser.save();
-        }catch(error){
+        }catch (error) {
+            console.log(error);
+        }
+    }
+    // MÉTODO para BUSCAR um USUÁRIO
+    async getOne(email) {
+        try{
+            const user = await User.findOne({email: email});
+            return user;
+        }catch (error){
             console.log(error)
         }
     }
-
-    // MÉTODO para BUSCAR um USUÁRIO
-    async getOne(email){
-        try{
-            const user = await User.findOne({ email : email });
-            return User;
-        } catch(error){
-            console.log(error)
-        }
-    }  
 }
 
-export default new userServices();
+
+export default new userService();
